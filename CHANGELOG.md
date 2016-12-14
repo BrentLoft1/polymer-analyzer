@@ -5,8 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-<!-- ## Unreleased -->
-<!-- Add new, unreleased changes here. -->
+## Unreleased
+* Add the ability to cancel an analysis by passing in a CancelToken, which can
+  signal that the request has been cancelled. This can be useful in saving work
+  if you know that the result of the analysis won't be used.
 
 ## [3.0.0-pre.12] - 2018-02-14
  * Functions and methods will now be automatically inferred as returning `void`
@@ -400,7 +402,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 * Fix a class of race conditions and cache invalidation errors that can occur when there are concurrent analysis runs and edits to files.
-
 
 ## [2.0.0-alpha.19] - 2016-12-12
 
