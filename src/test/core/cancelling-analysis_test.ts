@@ -23,8 +23,8 @@ suite('cancelling analysis midway through', () => {
     const analyzer = Analyzer.createForDirectory(fixtureDir);
     const cancelSource = CancelToken.source();
 
-    const analysisPromise =
-        analyzer.analyze(['vanilla-elements.js'], cancelSource.token);
+    const analysisPromise = analyzer.analyze(
+        ['vanilla-elements.js'], {cancelToken: cancelSource.token});
     cancelSource.cancel();
     const analysis = await analysisPromise;
     const result = analysis.getDocument('vanilla-element.js');
@@ -38,7 +38,7 @@ suite('cancelling analysis midway through', () => {
     const cancelSource = CancelToken.source();
     const url = 'vanilla-elements.js';
     const cancelledAnalysisPromise =
-        analyzer.analyze([url], cancelSource.token);
+        analyzer.analyze([url], {cancelToken: cancelSource.token});
     const goodAnalysisPromise = analyzer.analyze([url]);
     cancelSource.cancel();
     const cancelledAnalysis = await cancelledAnalysisPromise;
